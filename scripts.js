@@ -79,6 +79,7 @@ function minusProduct(name) {
 		if (item.name === name) {
 			if (item.qty > 1) {
 				item.qty--;
+				return;
 			}
 
 			const heroName = document.querySelector('.hero__title').textContent;

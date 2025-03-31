@@ -55,6 +55,10 @@
 	box-sizing: border-box;
 }
 
+html {
+	scroll-behavior: smooth;
+}
+
 body {
 	max-width: 480px;
 	width: 100%;
@@ -95,7 +99,14 @@ ul, ol, li {
 	flex-direction: column;
 }
 
+.header:hover .header__content {
+	animation-play-state: paused;
+}
+
 .header__wrapper {
+	display: flex;
+	gap: 12px;
+
 	overflow: hidden;
 	white-space: nowrap;
 
@@ -109,7 +120,9 @@ ul, ol, li {
 	display: flex;
 	align-items: center;
 	gap: 12px;
-	animation: marquee 10s linear infinite;
+
+	will-change: transform;
+	animation: scrolling 10s linear infinite;
 }
 
 .header__item {
@@ -122,6 +135,19 @@ ul, ol, li {
 @keyframes marquee {
     0% { transform: translateX(100%); }
     100% { transform: translateX(-100%); }
+}
+
+@keyframes scroll-text {
+  to { transform: translateX(-100%); }
+}
+
+@keyframes scrolling {
+	0% {
+		transform: translateX(0);
+	}
+	100% {
+		transform: translateX(-100%);
+	}
 }
 
 
