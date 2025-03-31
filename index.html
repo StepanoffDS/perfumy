@@ -21,6 +21,23 @@
 					<div class="header__item">Doskonała jakość</div>
 					<img src="./imgs/icons/star.svg" alt="star"/>
 
+					<div class="header__item">Sklep internetowy</div>
+					<img src="./imgs/icons/star.svg" alt="star"/>
+					<div class="header__item">Wysyłka 1-2 dni</div>
+					<img src="./imgs/icons/star.svg" alt="star"/>
+					<div class="header__item">Rabaty do 70% 2</div>
+					<img src="./imgs/icons/star.svg" alt="star"/>
+					<div class="header__item">Doskonała jakość</div>
+
+					<img src="./imgs/icons/star.svg" alt="star"/>
+					<div class="header__item">Sklep internetowy</div>
+					<img src="./imgs/icons/star.svg" alt="star"/>
+					<div class="header__item">Wysyłka 1-2 dni</div>
+					<img src="./imgs/icons/star.svg" alt="star"/>
+					<div class="header__item">Rabaty do 70% 2</div>
+					<img src="./imgs/icons/star.svg" alt="star"/>
+					<div class="header__item">Doskonała jakość</div>
+
 					<img src="./imgs/icons/star.svg" alt="star"/>
 					<div class="header__item">Sklep internetowy</div>
 					<img src="./imgs/icons/star.svg" alt="star"/>
@@ -96,7 +113,7 @@
 						</div>
 					</div>
 
-					<button class="hero__btn hero__btn--promocja" onclick="addProductToCard()">Kup teraz za 199 zł <span>&nbsp; 549 zł</span></button>
+					<button class="hero__btn hero__btn--promocja" onclick="addProductToCard()">Kup teraz za 199 zł &nbsp;<span>549 zł</span></button>
 				</div>
 			</div>
 		</section>
@@ -184,9 +201,12 @@
 				<span class="clients__rating-reviews">420 recenzji</span>
 			</div>
 			<div class="clients__splide splide">
+				<div class="back-button" style="display: none;">
+					<span>←</span>
+				</div>
 				<div class="splide__track clients__track">
 					<ul class="splide__list clients__list">
-						<li class="splide__slide clients__slide">
+						<li data-index="0" class="splide__slide clients__slide">
 							<header class="clients__slide-header">
 								<img class="clients__slide-header-img" src="./imgs/person.webp" alt="clients__slide"/>
 								<div class="clients__slide-info">
@@ -200,7 +220,7 @@
 								<img class="clients__slide-img" src="./imgs/dior.webp" alt="Perfumy"/>
 							</div>
 						</li>
-						<li class="splide__slide clients__slide">
+						<li data-index="1" class="splide__slide clients__slide">
 							<header class="clients__slide-header">
 								<img class="clients__slide-header-img" src="./imgs/person.webp" alt="clients__slide"/>
 								<div class="clients__slide-info">
@@ -214,7 +234,7 @@
 								<img class="clients__slide-img" src="./imgs/dior.webp" alt="Perfumy"/>
 							</div>
 						</li>
-						<li class="splide__slide clients__slide">
+						<li data-index="2" class="splide__slide clients__slide">
 							<header class="clients__slide-header">
 								<img class="clients__slide-header-img" src="./imgs/person.webp" alt="clients__slide"/>
 								<div class="clients__slide-info">
@@ -228,7 +248,7 @@
 								<img class="clients__slide-img" src="./imgs/dior.webp" alt="Perfumy"/>
 							</div>
 						</li>
-						<li class="splide__slide clients__slide">
+						<li data-index="3" class="splide__slide clients__slide">
 							<header class="clients__slide-header">
 								<img class="clients__slide-header-img" src="./imgs/person.webp" alt="clients__slide"/>
 								<div class="clients__slide-info">
@@ -242,7 +262,7 @@
 								<img class="clients__slide-img" src="./imgs/dior.webp" alt="Perfumy"/>
 							</div>
 						</li>
-						<li class="splide__slide clients__slide">
+						<li data-index="4" class="splide__slide clients__slide">
 							<header class="clients__slide-header">
 								<img class="clients__slide-header-img" src="./imgs/person.webp" alt="clients__slide"/>
 								<div class="clients__slide-info">
@@ -299,32 +319,52 @@
 					</h3>
 					<div class="catalog__cards">
 						<div class="catalog__card">
-							<img src="./imgs/dior.webp" alt="perfumy" class="catalog__card-img">
-							<h5 class="catalog__card-title">Dior Savage</h5>
-							<div class="catalog__card-desc">100 ml</div>
-							<div class="catalog__card-price">199 zł <span>&nbsp; 549 zł</span></div>
-							<a href="#!" class="catalog__card-btn">Dodaj do zamówienia</a>
+							<a href="index.html">
+								<img src="./imgs/dior.webp" alt="perfumy" class="catalog__card-img">
+								<h5 class="catalog__card-title">Dior Savage</h5>
+								<div class="catalog__card-desc">100 ml</div>
+								<div class="catalog__card-price">
+									<span class="catalog__card-price--now">199</span> zł
+									<span>&nbsp;<span class="catalog__card-price--old">549</span>&nbsp;zł</span>
+								</div>
+							</a>
+							<button class="catalog__card-btn">Dodaj do zamówienia</button>
 						</div>
 						<div class="catalog__card">
-							<img src="./imgs/dior.webp" alt="perfumy" class="catalog__card-img">
-							<h5 class="catalog__card-title">Dior Savage</h5>
-							<div class="catalog__card-desc">100 ml</div>
-							<div class="catalog__card-price">199 zł <span>&nbsp; 549 zł</span></div>
-							<a href="#!" class="catalog__card-btn">Dodaj do zamówienia</a>
+							<a href="index.html">
+								<img src="./imgs/dior.webp" alt="perfumy" class="catalog__card-img">
+								<h5 class="catalog__card-title">Dior Savage</h5>
+								<div class="catalog__card-desc">100 ml</div>
+								<div class="catalog__card-price">
+									<span class="catalog__card-price--now">199</span> zł
+									<span>&nbsp;<span class="catalog__card-price--old">549</span>&nbsp;zł</span>
+								</div>
+							</a>
+							<button class="catalog__card-btn">Dodaj do zamówienia</button>
 						</div>
 						<div class="catalog__card">
-							<img src="./imgs/dior.webp" alt="perfumy" class="catalog__card-img">
-							<h5 class="catalog__card-title">Dior Savage</h5>
-							<div class="catalog__card-desc">100 ml</div>
-							<div class="catalog__card-price">199 zł <span>&nbsp; 549 zł</span></div>
-							<a href="#!" class="catalog__card-btn">Dodaj do zamówienia</a>
+							<a href="index.html">
+								<img src="./imgs/dior.webp" alt="perfumy" class="catalog__card-img">
+								<h5 class="catalog__card-title">Dior Savage</h5>
+								<div class="catalog__card-desc">100 ml</div>
+								<div class="catalog__card-price">
+									<span class="catalog__card-price--now">199</span> zł
+									<span>&nbsp;<span class="catalog__card-price--old">549</span>&nbsp;zł</span>
+								</div>
+							</a>
+							<button class="catalog__card-btn">Dodaj do zamówienia</button>
 						</div>
 						<div class="catalog__card">
-							<img src="./imgs/dior.webp" alt="perfumy" class="catalog__card-img">
-							<h5 class="catalog__card-title">Dior Savage</h5>
-							<div class="catalog__card-desc">100 ml</div>
-							<div class="catalog__card-price">199 zł <span>&nbsp; 549 zł</span></div>
-							<a href="#!" class="catalog__card-btn">Dodaj do zamówienia</a>
+							<a href="index.html">
+								<img src="./imgs/dior.webp" alt="perfumy" class="catalog__card-img">
+								<h5 class="catalog__card-title">Dior Savage</h5>
+								<div class="catalog__card-desc">100 ml</div>
+								<div class="catalog__card-price">
+									<span class="catalog__card-price--now">199</span> zł
+									<span>&nbsp;<span class="catalog__card-price--old">549</span>&nbsp;zł</span>
+								</div>
+							</a>
+							<button class="catalog__card-btn">Dodaj do zamówienia</button>
 						</div>
 					</div>
 				</div>

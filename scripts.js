@@ -1,3 +1,5 @@
+// СКРИПТЫ СЛАЙДЕРА
+
 var splide = new Splide('.clients__splide', {
 	perMove: 1,
 	gap: '4px',
@@ -7,6 +9,7 @@ var splide = new Splide('.clients__splide', {
 	autoWidth  : false,
 	fixedWidth : 300,
 	gap        : '10px',
+	speed      : 1000,
 	padding: {
 		left: '16px'
 	}
@@ -14,6 +17,39 @@ var splide = new Splide('.clients__splide', {
 
 splide.mount();
 
+const items = document.querySelectorAll('.clients__slide');
+
+items.forEach(function (item) {
+	item.addEventListener('click', function () {
+			var index = parseInt(item.getAttribute('data-index'), 10);
+			splide.go(index);  // Перемещаем слайдер к нужному индексу
+	});
+});
+
+const backButton = document.querySelector('.back-button');
+function toggleBackButton(index) {
+	if (index > 0) {
+			backButton.style.display = 'flex'; // Показываем кнопку, если не первый слайд
+	} else {
+			backButton.style.display = 'none'; // Скрываем, если это первый слайд
+	}
+}
+
+// Добавляем обработчик клика для кнопки «Назад»
+backButton.addEventListener('click', function () {
+	if (splide.index > 0) {
+			splide.go(splide.index - 1); // Возвращает к предыдущему слайду
+	}
+});
+
+// Обновляем кнопку во время смены слайдов
+splide.on('move', function (newIndex) {
+	toggleBackButton(newIndex);
+});
+
+
+
+// СКРИПТЫ КОРЗИНЫ
 function addProductToCard() {
 	// img, name, priceNow, priceOld, size
 
@@ -30,23 +66,24 @@ function addProductToCard() {
 		return;
 	}
 
-	cart.push({ img, name, priceNow, priceOld, size, qty });
+	cart.unshift({ img, name, priceNow, priceOld, size, qty });
 	localStorage.setItem('cart', JSON.stringify(cart));
 
 	outputCart()
 }
-
-addProductToCard()
 
 function minusProduct(name) {
 	const cart = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [];
 
 	cart.forEach(item => {
 		if (item.name === name) {
-			if (item.qty >= 1) {
+			if (item.qty > 1) {
 				item.qty--;
 			}
-			if (item.qty === 0) {
+
+			const heroName = document.querySelector('.hero__title').textContent;
+
+			if (heroName !== name) {
 				cart.splice(cart.indexOf(item), 1);
 			}
 		}
@@ -104,8 +141,6 @@ function outputCart() {
 	outputCartTotal()
 }
 
-outputCart();
-
 function outputCartTotal() {
 	const cartTotalPriceNow = document.querySelector('.cart__total-price-now');
 	const cartTotalPriceOld = document.querySelector('.cart__total-price-old span');
@@ -132,4 +167,44 @@ function outputCartTotal() {
 	formPriceOld.textContent = totalOld;
 }
 
+function addProductToCardFromCatalog() {
+	const buttons = document.querySelectorAll('.catalog__card-btn');
+
+	buttons.forEach(button => {
+    button.addEventListener('click', function() {
+        const catalogCard = this.closest('.catalog__card');
+
+        if (catalogCard) {
+            const linkElement = catalogCard.querySelector('a');
+
+            if (linkElement) {
+							const href = linkElement.getAttribute('href');
+							const img = document.querySelector('.catalog__card-img').src;
+							const name = document.querySelector('.catalog__card-title').textContent;
+							const size = 100;
+							const priceNow = document.querySelector('.catalog__card-price--now').textContent;
+							const priceOld = document.querySelector('.catalog__card-price--old').textContent;
+							const qty = 1;
+
+							console.log(href, img, name, size, priceNow, priceOld, qty);
+
+							const cart = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [];
+
+							if (cart.some(item => item.name === name)) {
+								return;
+							}
+
+							cart.push({ img, name, priceNow, priceOld, size, qty });
+							localStorage.setItem('cart', JSON.stringify(cart));
+
+							outputCart();
+            }
+        }
+    });
+});
+}
+
+addProductToCard()
+outputCart();
 outputCartTotal();
+addProductToCardFromCatalog()
